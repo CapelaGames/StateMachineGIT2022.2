@@ -5,12 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-
     void Update()
     {
         Movement();
     }
-
     void Movement()
     {
         float xAxis = Input.GetAxisRaw("Horizontal");
@@ -22,42 +20,34 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += (Vector3) move;
     }
-
     void OldMovement()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            //transform.position.y += speed;
-            Vector2 newPosition =  transform.position;
+            Vector2 newPosition = transform.position;
             newPosition.y += speed * Time.deltaTime;
             transform.position = newPosition;
-
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            Vector2 playerPosition = transform.position;
-            playerPosition.y -= speed * Time.deltaTime;
-            transform.position = playerPosition ;
+            Vector2 newPosition = transform.position;
+            newPosition.y -= speed * Time.deltaTime;
+            transform.position = newPosition;
+        }
 
+        if (Input.GetKey(KeyCode.A) )
+        {
+            Vector2 newPosition = transform.position;
+            newPosition.x -= speed * Time.deltaTime;
+            transform.position = newPosition;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            Vector2 playerPosition = transform.position;
-            playerPosition.x += speed * Time.deltaTime;
-            transform.position = playerPosition;
-
-        }
-
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            Vector2 playerPosition = transform.position;
-            playerPosition.x -= speed * Time.deltaTime;
-            transform.position = playerPosition;
-
+            Vector2 newPosition = transform.position;
+            newPosition.x += speed * Time.deltaTime;
+            transform.position = newPosition;
         }
     }
 }
-
