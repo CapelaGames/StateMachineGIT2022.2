@@ -12,7 +12,8 @@ public class AiAgent : MonoBehaviour
     [SerializeField] private float speed;
     void Update()
     {
-        //                                                  this.transform.position;
+        //
+        //                                                this.transform.position;
         Vector2 directionToPlayer = player.transform.position - transform.position;
         //If you want to know the direction from A to B
         // A ----> B
