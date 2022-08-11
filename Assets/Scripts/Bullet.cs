@@ -13,4 +13,15 @@ public class Bullet : MonoBehaviour
 
         transform.position = position + direction;
     }
+
+    void Start()
+    {
+        StartCoroutine(DestroySelf(1f));
+    }
+
+    IEnumerator DestroySelf(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        GameObject.Destroy(gameObject);
+    }
 }
