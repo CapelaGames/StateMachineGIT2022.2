@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bullet : MonoBehaviour
+{
+    [SerializeField] private float _speed;
+    void Update()
+    {
+        Vector2 direction = transform.up;
+        Vector2 position = transform.position;
+        direction = direction.normalized * _speed * Time.deltaTime;
+
+        transform.position = position + direction;
+    }
+}
