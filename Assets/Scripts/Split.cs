@@ -7,13 +7,10 @@ public class Split : MonoBehaviour
     [SerializeField] float shrinkPercent = 0.75f;
     [SerializeField] float smallestSize = 0.1f;
 
-    //Unity cannot see this public variable
-    [System.NonSerialized] public Bullet spiltByBullet = null;
-
+    public Bullet spiltByBullet = null;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Bullet bullet =  collision.gameObject.GetComponent<Bullet>();
-
         if (bullet != null)
         { //we hit a bullet
             if (bullet == spiltByBullet) return;
@@ -24,12 +21,10 @@ public class Split : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-            GameObject newGO = Instantiate(gameObject,
+            spiltByBullet = bullet;
+            Instantiate(gameObject,
                 transform.position,
                 transform.rotation);
-
-            spiltByBullet = bullet;
-            newGO.GetComponent<Split>().spiltByBullet = bullet;
         }
     }
 }
