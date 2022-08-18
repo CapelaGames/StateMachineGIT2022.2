@@ -90,19 +90,4 @@ public class AiAgent : MonoBehaviour
         }
     }
 
-    public void OrbitPlayer()
-    {
-        Orbit(_player.transform.position);
-    }
-
-    [SerializeField] float orbitDistance = 2f;
-    void Orbit(Vector2 point)
-    {
-       // Vector2 pointDirection =  point - (Vector2)transform.position;
-        //Vector2 closerPoint = pointDirection.normalized * orbitDistance;
-
-        transform.RotateAround(point, Vector3.forward, _speed * 10 * Time.deltaTime);
-
-        Vector2.
-    }
 }

@@ -69,7 +69,7 @@ public class StateMachine : MonoBehaviour
         Debug.Log("Orbit: Enter");
         while (_state == State.Orbit)
         {
-            _aiAgent.OrbitPlayer();
+           // _aiAgent.OrbitPlayer();
             yield return null; //wait a single frame
         }
         Debug.Log("Orbit: Exit");
