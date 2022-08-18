@@ -6,12 +6,31 @@ using UnityEngine.UI;
 public class PlanetAI : MonoBehaviour
 {
     public Text healthText;
+    public Slider healthBar;
+    public Image bar;
     public int health;
     public int maxHealth = 100;
     void Start()
     {
-        healthText.text = health.ToString();
+        UpdateUI();
     }
+
+    public void UpdateUI()
+    {
+        healthText.text = "hp: " + health;
+        healthBar.value = health;
+        bar.color = Color.Lerp(Color.red, Color.green, (float) health / maxHealth);
+        if(health == 0)
+        {
+            bar.gameObject.SetActive(false);
+        }
+        else
+        {
+            bar.gameObject.SetActive(true);
+        }
+    }
+  
+
     public void Damage(int damageAmmount)
     {
         if (health - damageAmmount < 0)
@@ -23,7 +42,7 @@ public class PlanetAI : MonoBehaviour
             health -= damageAmmount;
         }
 
-        healthText.text = health.ToString();
+        UpdateUI();
     }
 
 
@@ -38,7 +57,7 @@ public class PlanetAI : MonoBehaviour
             health += healAmmount;
         }
 
-        healthText.text = health.ToString();
+        UpdateUI();
     }
 
 
