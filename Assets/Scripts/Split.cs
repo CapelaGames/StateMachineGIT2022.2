@@ -22,9 +22,20 @@ public class Split : MonoBehaviour
                 return;
             }
             spiltByBullet = bullet;
-            Instantiate(gameObject,
-                transform.position,
-                transform.rotation);
+            GameObject newGO = Instantiate(gameObject,
+                                    transform.position,
+                                    transform.rotation);
+
+           /* newGO.GetComponent<Split>().Explode(bullet.transform.position);
+            Explode(bullet.transform.position);*/
         }
     }
+
+/*    public void Explode(Vector3 point)
+    {
+        Vector2 force = transform.position - point;
+        force = force.normalized * 3f;
+
+        gameObject.GetComponent<Rigidbody2D>().AddForce(force,ForceMode2D.Impulse);
+    }*/
 }
